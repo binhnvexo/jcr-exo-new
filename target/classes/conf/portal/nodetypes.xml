@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<nodeTypes xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
+    
+	<nodeType name="exostore:book" isMixin="false" hasOrderableChildNodes="false" primaryItemName="">
+		<supertypes>
+			<supertype>nt:base</supertype>
+			<supertype>mix:referenceable</supertype>
+		</supertypes>
+		<propertyDefinitions>
+			<propertyDefinition name="exostore:bookname" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:bookcategory" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:bookcontent" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:author" requiredType="Reference" autoCreated="false" mandatory="false" 
+			    		onParentVersion="COPY" protected="false" multiple="false">
+        		<valueConstraints/>
+      		</propertyDefinition>
+		</propertyDefinitions>
+	</nodeType>
+	
+	<nodeType name="exostore:author" isMixin="false" hasOrderableChildNodes="false" primaryItemName="">
+		<supertypes>
+			<supertype>nt:base</supertype>
+			<supertype>mix:referenceable</supertype>
+		</supertypes>
+		<propertyDefinitions>
+			<propertyDefinition name="exostore:authorname" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:authoraddress" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:authorphone" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+		</propertyDefinitions>
+	</nodeType>
+	
+	<nodeType name="exostore:user" isMixin="false" hasOrderableChildNodes="false" primaryItemName="">
+		<supertypes>
+			<supertype>nt:base</supertype>
+			<supertype>mix:referenceable</supertype>
+		</supertypes>
+		<propertyDefinitions>
+			<propertyDefinition name="exostore:username" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:password" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:fullname" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:useraddress" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:userphone" requiredType="String" autoCreated="false" mandatory="false" 
+						onParentVersion="COPY" protected="false" multiple="false">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition name="exostore:book" requiredType="Reference" autoCreated="false" mandatory="false" 
+			    		onParentVersion="COPY" protected="false" multiple="true">
+        		<valueConstraints/>
+      		</propertyDefinition>
+		</propertyDefinitions>
+	</nodeType>
+	
+</nodeTypes>

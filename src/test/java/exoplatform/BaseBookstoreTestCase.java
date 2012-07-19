@@ -21,6 +21,7 @@ import java.util.List;
 import javax.jcr.Node;
 import javax.jcr.Session;
 
+import org.exoplatform.component.test.AbstractKernelTest;
 import org.exoplatform.container.StandaloneContainer;
 import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
@@ -29,7 +30,6 @@ import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
 import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.security.Identity;
-import org.exoplatform.test.BasicTestCase;
 
 /**
  * Created by The eXo Platform SAS
@@ -37,7 +37,7 @@ import org.exoplatform.test.BasicTestCase;
  *          hung.nguyen@exoplatform.com
  * May 7, 2008  
  */
-public abstract class BaseBookstoreTestCase extends BasicTestCase {
+public abstract class BaseBookstoreTestCase extends AbstractKernelTest {
 
   protected static Log                  log                    = ExoLogger.getLogger("exoplatform.bookstore.test");
 

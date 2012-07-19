@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.exoplaform.org/xml/ns/kernel_1_0.xsd http://www.exoplaform.org/xml/ns/kernel_1_0.xsd"
+	 xmlns="http://www.exoplaform.org/xml/ns/kernel_1_0.xsd">
+	<import>jar:/conf/portal/jcr-configuration.xml</import>
+	<import>jar:/conf/portal/jcr-component-plugins-configuration.xml</import>
+	<import>jar:/conf/portal/jcr-nodetypes-configuration.xml</import>
+	<import>jar:/conf/portal/bookstore-configuration.xml</import>
+</configuration>
