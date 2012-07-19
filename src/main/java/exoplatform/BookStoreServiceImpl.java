@@ -26,6 +26,7 @@ import javax.jcr.RepositoryException;
 import org.exoplatform.services.cache.CacheService;
 import org.exoplatform.services.cache.ExoCache;
 import org.exoplatform.services.jcr.RepositoryService;
+import org.picocontainer.Startable;
 
 import exoplatform.entity.Author;
 import exoplatform.entity.Book;
@@ -39,7 +40,7 @@ import exoplatform.exception.DuplicateBookException;
  *          binhnv@exoplatform.com
  * Jul 6, 2012  
  */
-public class BookStoreServiceImpl implements BookStoreService {
+public class BookStoreServiceImpl implements Startable, BookStoreService {
 
   /* Define a exo cache */
   private ExoCache<Serializable, Book> cache;
@@ -79,7 +80,7 @@ public class BookStoreServiceImpl implements BookStoreService {
   /**
    * create new database
    */
-  private void createDB() {
+  public void createDB() {
     try {
       Node authorNode1 = addAuthor("Conan Doyle", "England", "123456789");
       Node authorNode2 = addAuthor("JK Rowling", "England", "987654321");

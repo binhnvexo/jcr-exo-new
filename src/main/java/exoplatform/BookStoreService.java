@@ -16,16 +16,74 @@
  */
 package exoplatform;
 
+import javax.jcr.Node;
+
 import exoplatform.entity.User;
+import exoplatform.entity.Book.CATEGORY;
+import exoplatform.exception.DuplicateBookException;
 
 /**
  * Created by The eXo Platform SAS
  * Author : BinhNV
  *          binhnv@exoplatform.com
- * Jul 18, 2012  
+ * Jul 19, 2012  
  */
 public interface BookStoreService {
 
+  /**
+   * create new database
+   */
+  public void createDB();
+  
+  /**
+   * get user by name with sql statement
+   * 
+   * @param username
+   * @return
+   */
   public User getUserByNameSQL(String username);
+  
+  /**
+   * get user by name with xpath statement
+   * 
+   * @param username
+   * @return
+   */
+  public User getUserByNameXPath(String username);
+  
+  /**
+   * get user by name in range with sql statement
+   * 
+   * @param username
+   * @return
+   */
+  public User getUserByNameLimtSQL(String username);
+  
+  /**
+   * get user by name in range with xpath statement
+   * 
+   * @param username
+   * @return
+   */
+  public User getUserByNameLimtXPath(String username);
+  
+  /**
+   * get user by book name with sql statement
+   * 
+   * @param bookName
+   * @return
+   */
+  public User getUserByBookQuery(String bookName);
+  
+  /**
+   * add new book to datastorage
+   * 
+   * @param bookName
+   * @param category
+   * @param content
+   * @return
+   * @throws DuplicateBookException
+   */
+  public Node addBook(String bookName, CATEGORY category, String content, String nodePath) throws DuplicateBookException;
   
 }

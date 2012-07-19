@@ -16,9 +16,16 @@
  */
 package exoplatform;
 
-import org.exoplatform.services.organization.OrganizationService;
+import javax.jcr.Node;
 
+import junit.framework.TestCase;
+
+import org.exoplatform.container.StandaloneContainer;
+
+import exoplatform.entity.Book;
 import exoplatform.entity.User;
+import exoplatform.entity.Book.CATEGORY;
+import exoplatform.exception.DuplicateBookException;
 
 /**
  * Created by The eXo Platform SAS
@@ -26,31 +33,99 @@ import exoplatform.entity.User;
  *          binhnv@exoplatform.com
  * Jul 17, 2012  
  */
-public class BookStoreTest extends BaseBookstoreTestCase {
-
+public class BookStoreTest extends TestCase {
+  
   private static BookStoreService service;
-  private static JCRDataStorage storage;
-  private OrganizationService organizationService;
+  private static StandaloneContainer container;
+  
+  static {
+    initContainer();
+  }
   
   public BookStoreTest() throws Exception {
     super();
-    service = (BookStoreService) container.getComponentInstanceOfType(BookStoreService.class);
-    storage = new JCRDataStorage(repositoryService);
-    organizationService = (OrganizationService) container.getComponentAdapterOfType(OrganizationService.class);
   }
   
-  /* (non-Javadoc)
-   * @see junit.framework.TestCase#setUp()
-   */
+  private static void initContainer() {
+    try {
+      String configFile = BookStoreTest.class.getResource("/conf/portal/test-configuration.xml").toString();
+      StandaloneContainer.addConfigurationURL(configFile);
+      container = StandaloneContainer.getInstance();
+      service = (BookStoreService) container.getComponentInstanceOfType(BookStoreService.class);
+    } catch (Exception e) {
+      throw new RuntimeException("fail to initialize container: " + e.getMessage(), e);
+    }
+  }
+  
   @Override
-  public void setUp() throws Exception {
-    super.setUp();
+  protected void setUp() throws Exception {
+    
   }
   
-  public void testUserByNameSQL() {
-    String name = "BinhNV";
-    
+  /**
+   * create new database
+   */
+  public void testCreateDB() {
+    service.createDB();
+  }
+  
+  /**
+   * get user by name with sql statement
+   * 
+   * @param username
+   * @return
+   */
+  public void testGetUserByNameSQL() {
+    String name = "binhnv";
     User user = service.getUserByNameSQL(name);
+    assertNotNull(user);
+  }
+  
+  /**
+   * get user by name with xpath statement
+   * 
+   * @param username
+   * @return
+   */
+  public void testGetUserByNameXPath() {
+    String name = "binhnv";
+    User user = service.getUserByNameXPath(name);
+    assertNotNull(user);
+  }
+  
+  /**
+   * get user by name in range with sql statement
+   * 
+   * @param username
+   * @return
+   */
+  public void testGetUserByNameLimtSQL() {
+    String name = "binhnv";
+    User user = service.getUserByNameLimtSQL(name);
+    assertNotNull(user);
+  }
+  
+  /**
+   * get user by name in range with xpath statement
+   * 
+   * @param username
+   * @return
+   */
+  public void testGetUserByNameLimtXPath() {
+    String name = "binhnv";
+    User user = service.getUserByNameLimtXPath(name);
+    assertNotNull(user);
+  }
+  
+  /**
+   * get user by book name with sql statement
+   * 
+   * @param bookName
+   * @return
+   */
+  public void testGetUserByBookQuery() {
+    String bookName = "The sign of the four";
+    User user = service.getUserByBookQuery(bookName);
     assertNotNull(user);
   }
   

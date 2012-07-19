@@ -537,7 +537,7 @@ public class JCRDataStorage {
     /* replace "" sign and - sign */
     name = name.replaceAll("\"", "\\\"").replaceAll("-", StringUtils.EMPTY);
     /* create query string */
-    StringBuffer sb = new StringBuffer("Select * from " + BookNodeTypes.EXO_BOOK);
+    StringBuffer sb = new StringBuffer("Select " + BookNodeTypes.EXO_BOOK_NAME +" from " + BookNodeTypes.EXO_BOOK);
     sb.append(" where " + BookNodeTypes.EXO_BOOK_NAME + " = '" + name + "'");
     SessionProvider sProvider = SessionProvider.createSystemProvider();
     try {
